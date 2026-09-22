@@ -1,0 +1,42 @@
+
+
+1) ?- house = house.
+true.
+ They directly unite at the same atom.
+
+2) ?- house = abc.
+ false.
+ Different atoms, can't unify.
+
+3) ?- edge(a,b) = edge(C,b).
+ C = a.
+Same name and same number of args, C takes a, b matches b.
+
+4) ?- edge(a,d) = edge(C,B).
+C = a, B = d.
+the matching argument.
+
+5) ?- edge(C,B) = edge(a,d).
+ C = a, B = d.
+ unification is independent of order (left/right).
+
+6) ?- edge(A,f(g,h)) = edge(a,B).
+ A = a, B = f(g,h).
+A matches a, and B takes the whole structure f(g,h).
+
+7) ?- edge(A,A) = edge(b,c).
+ false.
+  A can't be b and c at the same time.
+
+
+8) ?- edge(A,A) = edge(b,b).
+ A = b.
+ Both sides want A = b, no conflict.
+
+9) ?- A = B, B = f.
+ A = f, B = f.
+ same variable means same value.A and B get linked
+
+10) ?- A = B, B = f, A = e.
+ false.
+A already became f, so A = e fails.
