@@ -1,0 +1,41 @@
+
+
+1) ?- house = house.
+true.
+ They directly unite at the same atom.
+
+2) ?- house = abc.
+ false.
+ There is no unification since house and ABC are distinct atoms.
+
+3) ?- edge(a,b) = edge(C,b).
+ C = a.
+The same number of arguments 2 and the same name (edge)'b' matches 'b'. 'a' matches C, C = a.
+
+4) ?- edge(a,d) = edge(C,B).
+C = a, B = d.
+the matching argument.
+
+5) ?- edge(C,B) = edge(a,d).
+ C = a, B = d.
+ unification is independent of order (left/right).
+
+6) ?- edge(A,f(g,h)) = edge(a,B).
+ A = a, B = f(g,h).
+'a' and 'a' match. B takes the entire structure f(g,h) since the second argument f(g,h) matches the empty variable B.
+
+7) ?- edge(A,A) = edge(b,c).
+ false.
+  Unification is unsuccessful since b and c are distinct constants.
+
+8) ?- edge(A,A) = edge(b,b).
+ A = b.
+ Both positions require A to hold the same value (b). No conflict occurs.
+
+9) ?- A = B, B = f.
+ A = f, B = f.
+ same variable means same value.
+
+10) ?- A = B, B = f, A = e.
+ false.
+Since f and e are different constants, attempting to make A = e after the first two objectives, A = f, is unsuccessful.
