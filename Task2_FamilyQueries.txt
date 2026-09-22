@@ -1,0 +1,40 @@
+
+Facts used:
+male(ali). male(ahmad). male(muhammad).
+male(faisal). male(hassan). male(khan).
+female(sara). female(nora).
+
+parent(ali, ahmad).     parent(ali, muhammad).
+parent(ahmad, sara).    parent(ahmad, nora).
+parent(ahmad, khan).    parent(muhammad, faisal).
+parent(faisal, hassan).
+
+ Names of all females:
+?- female(X).
+X = sara ;
+X = nora.
+
+Is there any male:
+?- male(_).
+true.
+
+ Grandparent of Faisal:
+?- parent(GP, P), parent(P, faisal).
+GP = ali,
+P = muhammad.
+
+
+All daughters of Ahmad:
+?- parent(ahmad, X), female(X).
+X = sara ;
+X = nora.
+
+ Do Ahmad and Muhammad have a common parent:
+?- parent(P, ahmad), parent(P, muhammad).
+P = ali.
+
+
+ Is Khan the brother of Nora:
+?- parent(P, khan), parent(P, nora), male(khan), khan \= nora.
+P = ahmad.
+
